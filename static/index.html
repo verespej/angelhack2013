@@ -1,8 +1,6 @@
 <!doctype html>
 <html>
 	<head>
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
 		<!--
@@ -38,82 +36,32 @@
 				text-align: left;
 			}
 		</style>
-
-		<script>
-			function editplug(inputTagId, deviceId) {
-				var elId = "input#" + inputTagId;
-				var disabled = $(elId).prop("disabled");
-				var statusValue = $(elId).prop("value");
-
-				if (!disabled) {
-					if (statusValue != "on" && statusValue != "off") {
-						alert("Only 'on' and 'off' are valid status values");
-						return;
-					}
-				}
-
-				$(elId).prop("disabled", !disabled);
-
-				// Was enabled, so this is a commit
-				if (!disabled) {
-					$.post("devices/" + deviceId + "?status=" + statusValue, function(result) {
-						// Success -> do nothing
-					}).error(function(xhr, status, error) {
-						alert("Status: " + status + "\nError: " + error);
-					});
-				}
-			}
-
-			function expand(inputTagId, expandButtonId) {
-			}
-
-			function getTableRow(deviceName, deviceStatus) {
-				var result = "<tr>";
-				result +=	"<td>" + deviceName + "</td>";
-				result += "<td>";
-				result += "<input id='status-" + deviceName + "' placeholder='Enter status' value='" + deviceStatus + "' disabled /> ";
-				result += "<a href='javascript: void(0)' onclick='editplug(\"status-" + deviceName + "\", \"" + deviceName + "\")'><i class='icon-pencil'></i></a>";
-				result += "</td>";
-				result += "<td id='expand-" + deviceName + "'>";
-				result += "<a href='javascript: void(0)' onclick='expand(\"status-" + deviceName + "\", \"expand-" + deviceName + "\")'>";
-				result += "<i class='icon-plus-sign'></i>";
-				result += "</a>";
-				result += "</td>";
-				result += "</tr>";
-				return result;
-			}
-
-			function loadDevices() {
-				$.getJSON("devices", function(devices) {
-						devices.forEach(function(deviceId) {
-							$.get("devices/" + deviceId, function(deviceStatus) {
-								$("#deviceTable > tbody:last").append(getTableRow(deviceId, deviceStatus));
-							}).error(function(xhr, status, error) {
-								alert("Status: " + status + "\nError: " + error);
-							});
-						});
-					}).error(function(xhr, status, error) {
-						alert("Status: " + status + "\nError: " + error);
-					});
-			}
-		</script>
+		<script></script>
 	</head>
-	<body onload="loadDevices()" class="gradient">
-		<img class="centered" style="display:block" src="./img/WijlyLogo500.png" />
+	<body class="gradient">
 		<div class="centered" style="width:100%; text-align:center">
-			<h2><i>The Backend for All Your Devices</i></h2>
-			<br /><br /><br />
-			<table class="centered" id="deviceTable">
-				<thead>
-					<tr>
-						<th>Device</th>
-						<th>Status</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
+			<h1>All Your Toys</h1>
+			<h2><i>Toys for a new era</i></h2>
 		</div>
+		<br />
+		<br />
+		<table cellpadding="20">
+			<tr>
+				<td>
+				More and more, we're getting sucked into the ever-present screens of the 21st century. 
+				From TVs to smart phones to tablets to laptops, we're losing touch with the real world 
+				and our kids are spending their weekends on the couch instead of being up and active.<br />
+				<br />
+				The tremendous technological progress of the last decade isn't going away, nor should it. 
+				However, we've reached the point where we can integrate the networked world with the real.
+				All Your Toys is created the toys that will fuel the imagination of the next generation.
+				Physical, virtual, and fun! All Your Toys is the evolution of play.
+				</td>
+			<td>
+				<iframe id="ytplayer" type="text/html" width="640" height="390"
+					src="http://www.youtube.com/embed/tZczcOlEJIo?autoplay=0&origin=http://www.allyourtoysarebelongtome.com"
+					frameborder="0" />
+			</td>
+		</tr>
 	</body>
 </html>
