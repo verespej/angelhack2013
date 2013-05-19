@@ -1,8 +1,7 @@
-AngelHack Seattle 2013
+# All Your Toys
 
-Music instrument app
+Website for All Your Toys
 
 Team:
-Ringo Nguyen
-Hakon Verespej
-
+Ringo
+Hakon
